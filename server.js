@@ -1,15 +1,29 @@
-var express = require("express");
+// server logic
 
-var app = express();
+let express = require("express");
+let bodyParser = require("body-parser");
+let path = require("path");
 
-var PORT = process.env.PORT || 3030;
+let app = express();
+var PORT = process.env.PORT || 8080; // Sets an initial port. We'll use this later in our listener
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// BodyParser makes it easy for our server to interpret data sent to it.
+// The code below is pretty standard.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({
+    type: 'application/vnd.api+json'
+}));
 
-require("./app/routing/apiRoutes")(app);
-require("./app/routing/htmlRoutes")(app);
+app.use(express.static('app'));
+//routes
+require('./app/routing/apiRoutes.js')(app);
+require('./app/routing/htmlRoutes.js')(app);
 
-app.listen(PORT, function() {
+//listener
+app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });

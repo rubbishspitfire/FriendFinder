@@ -1,27 +1,14 @@
-// ===============================================================================
-// LOAD DATA
-// We are linking our routes to a "data" source.
-// This data sources hold array of information on friend data
-// ===============================================================================
+// html routes
+let path = require("path");
 
-var path = require("path");
+module.exports = (app) => {
 
-// ===============================================================================
-// ROUTING
-// ===============================================================================
-
-module.exports = function (app) {
-    // HTML GET Requests
-    // Below code handles when users "visit" a page.
-    // In each of the below cases the user is shown an HTML page of content
-    // ---------------------------------------------------------------------------
-
-    app.get("/survey", function (req, resp) {
-        var seyverFilePath = path.join(__dirname,"../public/survey.html");
-        resp.sendFile(seyverFilePath)
-    });
-    app.get("*", function (req, resp) {
-        resp.sendFile(path.join(__dirname,"../public/home.html"))
+    app.get('/survey', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../public/survey.html'));
     });
 
+    // If no matching route is found default to home
+    app.use(function (req, res) {
+        res.sendFile(path.join(__dirname + '/../public/home.html'));
+    });
 }
