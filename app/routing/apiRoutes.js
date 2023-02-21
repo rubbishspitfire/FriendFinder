@@ -1,7 +1,7 @@
 //api routes
-let friends = require('../data/friends.js');
-let path = require('path');
-module.exports = (app) => {
+var friendData = require('../data/friends');
+var path = require('path');
+module.exports = function (app) {
 
     app.get('/api/friends', function (req, res) {
         res.json(friends);
@@ -26,7 +26,7 @@ module.exports = (app) => {
 
     app.post('/api/clear', function (req, res) {
         // Empty out the arrays of data
-        friends = [];
+        friendData.length = 0;
         console.log(friends);
     });
 }

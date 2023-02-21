@@ -1,5 +1,5 @@
 // html routes
-let path = require("path");
+var path = require("path");
 
 module.exports = (app) => {
 
