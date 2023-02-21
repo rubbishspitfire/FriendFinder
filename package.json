@@ -7,6 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rubbishspitfire/FriendFinder.git"
+  },
   "author": "Patience Condell",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rubbishspitfire/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/rubbishspitfire/FriendFinder#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
